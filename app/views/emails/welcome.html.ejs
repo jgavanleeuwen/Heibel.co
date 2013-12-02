@@ -1,0 +1,381 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+				<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+				<meta name="viewport" content="width=device-width, initial-scale=1.5"/>
+				<title>Modular Template Patterns</title>
+
+				<!--
+					This email is an experimental proof-of-concept based on the
+						idea that the most common design patterns seen in email can
+						be placed in modular blocks and moved around to create
+						different designs.
+
+			The same principle is used to build the email templates in
+						MailChimp's Drag-and-Drop email editor.
+
+			This email is optimized for mobile email clients, and even
+						works relatively well in the Android Gmail App, which does
+						not support Media Queries, but does have limited mobile-
+						friendly functionality.
+
+			While this coding method is very flexible, it can be more
+						brittle than traditionally-coded emails, particularly in
+						Microsoft Outlook 2007-2010. Outlook-specific conditional
+						CSS is included to counteract the inconsistencies that
+						crop up.
+						
+						For more information on HTML email design and development,
+						visit http://templates.mailchimp.com
+				-->
+
+				<style type="text/css">
+			/*////// RESET STYLES //////*/
+			body, #bodyTable, #bodyCell{height:100% !important; margin:0; padding:0; width:100% !important;}
+			table{border-collapse:collapse;}
+			img, a img{border:0; outline:none; text-decoration:none;}
+			h1, h2, h3, h4, h5, h6{margin:0; padding:0;}
+			p{margin: 1em 0;}
+
+			/*////// CLIENT-SPECIFIC STYLES //////*/
+			.ReadMsgBody{width:100%;} .ExternalClass{width:100%;} /* Force Hotmail/Outlook.com to display emails at full width. */
+			.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div{line-height:100%;} /* Force Hotmail/Outlook.com to display line heights normally. */
+			table, td{mso-table-lspace:0pt; mso-table-rspace:0pt;} /* Remove spacing between tables in Outlook 2007 and up. */
+			#outlook a{padding:0;} /* Force Outlook 2007 and up to provide a "view in browser" message. */
+			img{-ms-interpolation-mode: bicubic;} /* Force IE to smoothly render resized images. */
+			body, table, td, p, a, li, blockquote{-ms-text-size-adjust:100%; -webkit-text-size-adjust:100%;} /* Prevent Windows- and Webkit-based mobile platforms from changing declared text sizes. */
+
+			/*////// FRAMEWORK STYLES //////*/
+			.flexibleContainerCell{padding-top:20px; padding-Right:20px; padding-Left:20px;}
+			.flexibleImage{height:auto;}
+			.bottomShim{padding-bottom:20px;}
+			.imageContent, .imageContentLast{padding-bottom:20px;}
+			.nestedContainerCell{padding-top:20px; padding-Right:20px; padding-Left:20px;}
+
+			/*////// GENERAL STYLES //////*/
+			body, #bodyTable{background-color:#F5F5F5;}
+			#bodyCell{padding-top:40px; padding-bottom:40px;}
+			#emailBody{background-color:#FFFFFF; border:1px solid #DDDDDD; border-collapse:separate; border-radius:4px;}
+			h1, h2, h3, h4, h5, h6{color:#202020; font-family:Helvetica; font-size:20px; line-height:125%; text-align:Left;}
+			.textContent, .textContentLast{color:#404040; font-family:Helvetica; font-size:16px; line-height:125%; text-align:Left; padding-bottom:20px;}
+			.textContent a, .textContentLast a{color:#2C9AB7; text-decoration:underline;}
+			.nestedContainer{background-color:#E5E5E5; border:1px solid #CCCCCC;}
+			.emailButton{background-color:#2C9AB7; border-collapse:separate; border-radius:4px;}
+			.buttonContent{color:#FFFFFF; font-family:Helvetica; font-size:18px; font-weight:bold; line-height:100%; padding:15px; text-align:center;}
+			.buttonContent a{color:#FFFFFF; display:block; text-decoration:none; width:100%;}
+
+			/*////// MOBILE STYLES //////*/
+			@media only screen and (max-width: 480px){			
+				/*////// CLIENT-SPECIFIC STYLES //////*/
+				body{width:100% !important; min-width:100% !important;} /* Force iOS Mail to render the email at full width. */
+
+				/*////// FRAMEWORK STYLES //////*/
+				/*
+					CSS selectors are written in attribute
+					selector format to prevent Yahoo Mail
+					from rendering media query styles on
+					desktop.
+				*/
+				table[id="emailBody"]{width:100% !important;}
+				table[class="flexibleContainer"]{display:block !important; width:100% !important;}
+				img[class="flexibleImage"]{width:100% !important;}
+				table[class="emailButton"]{width:100% !important;}
+				td[class="textContentLast"], td[class="imageContentLast"]{padding-top:20px !important;}
+
+				/*////// GENERAL STYLES //////*/
+				td[id="bodyCell"]{padding-top:10px !important; padding-Right:10px !important; padding-Left:10px !important;}
+			}
+		</style>
+				<!--
+					Outlook Conditional CSS
+
+						These two style blocks target Outlook 2007 & 2010 specifically, forcing
+						columns into a single vertical stack as on mobile clients. This is
+						primarily done to avoid the 'page break bug' and is optional.
+
+						More information here:
+			http://templates.mailchimp.com/development/css/outlook-conditional-css
+				-->
+				<!--[if mso 12]>
+						<style type="text/css">
+							.flexibleContainer{display:block !important; width:100% !important;}
+						</style>
+				<![endif]-->
+				<!--[if mso 14]>
+						<style type="text/css">
+							.flexibleContainer{display:block !important; width:100% !important;}
+						</style>
+				<![endif]-->
+		</head>
+		<body>
+			<center>
+					<table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
+							<tr>
+									<td align="center" valign="top" id="bodyCell">
+											<!-- EMAIL CONTAINER // -->
+												<!--
+													The table "emailBody" is the email's container.
+														Its width can be set to 100% for a color band
+														that spans the width of the page.
+												-->
+											<table border="0" cellpadding="0" cellspacing="0" width="600" id="emailBody">
+
+												<!-- MODULE ROW // -->
+							<tr>
+															<td align="center" valign="top">
+																	<!-- CENTERING TABLE // -->
+																	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+																			<tr>
+																					<td align="center" valign="top">
+																							<!-- FLEXIBLE CONTAINER // -->
+																							<table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer">
+																									<tr>
+																											<td align="center" valign="top" width="600" class="flexibleContainerCell">
+
+
+																														<!-- CONTENT TABLE // -->
+																														<!--
+																															The table cell imageContent has padding
+																																applied to the bottom as part of the framework,
+																																ensuring images space correctly in Android Gmail.
+																														-->
+																														<table border="0" cellpadding="0" cellspacing="0" width="100%">
+																																<tr>
+																																		<td valign="top" class="imageContent">
+																																				<img src="http://placehold.it/1120x450" width="560" class="flexibleImage" />
+																																		</td>
+																																</tr>
+																														</table>
+																														<!-- // CONTENT TABLE -->
+
+
+																												</td>
+																										</tr>
+																								</table>
+																								<!-- // FLEXIBLE CONTAINER -->
+																						</td>
+																				</tr>
+																		</table>
+																		<!-- // CENTERING TABLE -->
+																</td>
+														</tr>
+														<!-- // MODULE ROW -->
+
+																					<!-- MODULE ROW // -->
+														<!--
+															To move or duplicate any of the design patterns
+																in this email, simply move or copy the entire
+																MODULE ROW section for each content block.
+														-->
+							<tr>
+															<td align="center" valign="top">
+																	<!-- CENTERING TABLE // -->
+																		<!--
+																			The centering table keeps the content
+																				tables centered in the emailBody table,
+																				in case its width is set to 100%.
+																		-->
+																	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+																			<tr>
+																					<td align="center" valign="top">
+																							<!-- FLEXIBLE CONTAINER // -->
+																								<!--
+																									The flexible container has a set width
+																										that gets overridden by the media query.
+																										Most content tables within can then be
+																										given 100% widths.
+																								-->
+																							<table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer">
+																									<tr>
+																											<td align="center" valign="top" width="600" class="flexibleContainerCell">
+
+
+																														<!-- CONTENT TABLE // -->
+																														<!--
+																															The content table is the first element
+																																that's entirely separate from the structural
+																																framework of the email.
+																														-->
+																														<table border="0" cellpadding="0" cellspacing="0" width="100%">
+																																<tr>
+																																		<td valign="top" class="textContent">
+																																				<h3>Hello <%= user.name.first %></h3>
+																																				<br />
+																																				A kitten or kitty is a juvenile domesticated cat. A feline litter usually consists of two to five kittens. To survive, kittens need the care of their mother for the first several weeks of their life. Kittens are highly social animals and spend most of their waking hours playing and interacting with available companions.
+																																		</td>
+																																</tr>
+																														</table>
+																														<!-- // CONTENT TABLE -->
+
+
+																												</td>
+																										</tr>
+																								</table>
+																								<!-- // FLEXIBLE CONTAINER -->
+																						</td>
+																				</tr>
+																		</table>
+																		<!-- // CENTERING TABLE -->
+																</td>
+														</tr>
+														<!-- // MODULE ROW -->
+
+														<!-- MODULE ROW // -->
+							<tr>
+															<td align="center" valign="top">
+																	<!-- CENTERING TABLE // -->
+																	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+																			<tr>
+																					<td align="center" valign="top">
+																							<!-- FLEXIBLE CONTAINER // -->
+																							<table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer">
+																									<tr>
+																											<td valign="top" width="600" class="flexibleContainerCell">
+
+
+																														<!-- CONTENT TABLE // -->
+																														<table align="Left" border="0" cellpadding="0" cellspacing="0" width="200" class="flexibleContainer">
+																																<tr>
+																																		<td align="Left" valign="top" class="imageContent">
+																																				<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXwAAADSCAYAAABJhnvgAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGMUE2MjFFMkQ4NEFFMzExOUIzM0Q4NDE2QzM4NEFCMiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpCNjI0OEQyMzRDNjgxMUUzOEE5REE0NDgzRjEwRDUxNCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpCNjI0OEQyMjRDNjgxMUUzOEE5REE0NDgzRjEwRDUxNCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgV2luZG93cyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjcyMjk2MDE1NEE0Q0UzMTE5QTE0Q0I3NTBEN0U5QTgwIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkYxQTYyMUUyRDg0QUUzMTE5QjMzRDg0MTZDMzg0QUIyIi8+IDwvcmRmOkRlc2NyaXB0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" width="200" class="flexibleImage" />
+																																		</td>
+																																</tr>
+																														</table>
+																														<!-- // CONTENT TABLE -->
+
+
+																														<!-- CONTENT TABLE // -->
+																														<table align="Right" border="0" cellpadding="0" cellspacing="0" width="340" class="flexibleContainer">
+																																<tr>
+																																		<td valign="top" class="textContent">
+																																				<h3>Right Column</h3>
+																																				<br />
+																																				A kitten or kitty is a juvenile domesticated cat. Kittens are highly social animals and spend most of their waking hours playing and interacting with available companions.
+																																		</td>
+																																</tr>
+																														</table>
+																														<!-- // CONTENT TABLE -->
+
+
+																												</td>
+																										</tr>
+																								</table>
+																								<!-- // FLEXIBLE CONTAINER -->
+																						</td>
+																				</tr>
+																		</table>
+																		<!-- // CENTERING TABLE -->
+																</td>
+														</tr>
+														<!-- // MODULE ROW -->
+
+																					<!-- MODULE ROW // -->
+							<tr>
+															<td align="center" valign="top">
+																	<!-- CENTERING TABLE // -->
+																	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+																			<tr>
+																					<td align="center" valign="top">
+																							<!-- FLEXIBLE CONTAINER // -->
+																							<table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer">
+																									<tr>
+																											<td valign="top" width="600" class="flexibleContainerCell">
+
+
+																														<!-- CONTENT TABLE // -->
+																														<!--
+																															Keeping the table markup in its original
+																																order and swapping the align attribute values
+																																allows the tables to wrap in the correct order
+																																on small displays.
+																														-->
+																														<table align="Right" border="0" cellpadding="0" cellspacing="0" width="200" class="flexibleContainer">
+																																<tr>
+																																		<td align="Left" valign="top" class="imageContent">
+																																				<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXgAAAEnCAYAAACjRViEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGMUE2MjFFMkQ4NEFFMzExOUIzM0Q4NDE2QzM4NEFCMiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo4RDg0QUYxMzRCMTMxMUUzODdERkQ3NDExRTIwMTI1RSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo4RDg0QUYxMjRCMTMxMUUzODdERkQ3NDExRTIwMTI1RSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgV2luZG93cyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkE0NDVEMUI5RTI0QUUzMTFCMEEyRDAyRjI1ODc1MDI5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkYxQTYyMUUyRDg0QUUzMTE5QjMzRDg0MTZDMzg0QUIyIi8+IDwvcmRmOkRlc2NyaXB0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" width="200" class="flexibleImage" />
+																																		</td>
+																																</tr>
+																														</table>
+																														<!-- // CONTENT TABLE -->
+
+
+																														<!-- CONTENT TABLE // -->
+																														<table align="Left" border="0" cellpadding="0" cellspacing="0" width="340" class="flexibleContainer">
+																																<tr>
+																																		<td valign="top" class="textContent">
+																																				<h3>Left Column</h3>
+																																				<br />
+																																				A kitten or kitty is a juvenile domesticated cat. Kittens are highly social animals and spend most of their waking hours playing and interacting with available companions.
+																																		</td>
+																																</tr>
+																														</table>
+																														<!-- // CONTENT TABLE -->
+
+
+																												</td>
+																										</tr>
+																								</table>
+																								<!-- // FLEXIBLE CONTAINER -->
+																						</td>
+																				</tr>
+																		</table>
+																		<!-- // CENTERING TABLE -->
+																</td>
+														</tr>
+														<!-- // MODULE ROW -->
+
+
+																					<!-- MODULE ROW // -->
+							<tr>
+															<td align="center" valign="top">
+																	<!-- CENTERING TABLE // -->
+																	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+																			<tr>
+																					<td align="center" valign="top">
+																							<!-- FLEXIBLE CONTAINER // -->
+																							<table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer">
+																									<tr>
+																											<td align="center" valign="top" width="600" class="flexibleContainerCell bottomShim">
+
+
+																														<!-- CONTENT TABLE // -->
+																														<!--
+																															The emailButton table's width can be changed
+																																to affect the look of the button. To make the
+																																button width dependent on the text inside, leave
+																																the width blank. When a button is placed in a column,
+																																it's helpful to set the width to 100%.
+																														-->
+																														<table border="0" cellpadding="0" cellspacing="0" width="260" class="emailButton">
+																																<tr>
+																																		<td align="center" valign="middle" class="buttonContent">
+																																				<a href="#" target="_blank">Purchase Now</a>
+																																		</td>
+																																</tr>
+																														</table>
+																														<!-- // CONTENT TABLE -->
+
+
+																												</td>
+																										</tr>
+																								</table>
+																								<!-- // FLEXIBLE CONTAINER -->
+																						</td>
+																				</tr>
+																		</table>
+																		<!-- // CENTERING TABLE -->
+																</td>
+														</tr>
+														<!-- // MODULE ROW -->
+
+
+
+
+											</table>
+											<!-- // EMAIL CONTAINER -->
+										</td>
+								</tr>
+						</table>
+				</center>
+		</body>
+</html>

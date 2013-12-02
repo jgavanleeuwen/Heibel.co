@@ -1,0 +1,177 @@
+@import 'mixins';
+
+html {
+	font-size: 16px; // 1 rem
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+	font-family: "museo-sans", sans-serif;
+	font-weight: 100;
+	font-size: 4rem;
+}
+
+h2 {
+	font-family: "museo-sans", sans-serif;
+	font-weight: 100;
+	color: #666;
+}
+
+.success {
+	color: #5cb85c; 
+}
+
+label {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+}
+
+p {
+	font-family: "Open Sans", sans-serif;
+	font-size: .9rem;
+	line-height: 2em;
+}
+
+html, body {
+	height: 100%;
+}
+
+section {
+	height: 100%;
+	&.wide {
+		padding: 30px 0;
+		p {
+			text-align: justify;
+		}
+	}
+}
+
+.grayscale img {
+	-webkit-filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+	filter: grayscale(100%);
+	opacity: 0.2;
+	.transition();
+
+	&:hover {
+		opacity: 1.0;
+		-webkit-filter: grayscale(0%);
+		-moz-filter: grayscale(0%);
+		filter: grayscale(0%);
+	}
+}
+
+.alert {
+	margin-bottom: 0;
+}
+
+.navbar {
+	margin-bottom: 0;
+
+	img {
+		width: 30px;
+		height: 30px;
+		margin-right: 10px;
+	}
+
+	span {
+		color: #CCC;
+		margin-right: 10px;
+
+		a {
+			color: #CCC;
+			border-bottom: 1px dotted #FFF;
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+}
+
+.jumbotron {
+	background-size: cover;
+	padding: 100px 0 60px 0;
+	height:100%;
+
+	.container {
+		padding: 0;
+	}
+
+	p {
+		font-size: 1.2rem;
+		margin-bottom: 20px; 
+		line-height: 1.5em;
+	}
+
+	label {
+		font-size: 14px;
+	}
+}
+
+.form-signin {
+	max-width: 330px;
+	padding: 15px;
+	margin: 0 auto;
+
+	.form-signin-heading {
+		margin-bottom: 10px;
+	}
+
+	.checkbox {
+		margin-bottom: 10px;
+		font-weight: normal;
+	}
+
+	.form-control {
+		position: relative;
+		font-size: 16px;
+		height: auto;
+		padding: 10px;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+
+		&:focus {
+			z-index: 2;
+		}
+	}
+
+	input[type="text"] {
+		margin-bottom: -1px;
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+
+	input[type="password"], input[type="password"] {
+		margin-bottom: 10px;
+	}
+
+	.help-block {
+		color: #FF0000;
+		font-size: .7em;
+	}
+}
+
+.btn-group.facebook a {
+	background-color: #3b5998;
+	border-color: #2e487f;
+}
+.btn-group.facebook a:hover {
+	background-color: #2e487f;
+	border-color: #233a6a;
+}
+
+
+footer {
+	background-color: #333;
+	margin-top: 30px;
+	padding: 30px;
+
+	span {
+		color: white;
+	}
+}
