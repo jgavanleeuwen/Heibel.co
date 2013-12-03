@@ -1,0 +1,38 @@
+{
+	"app": {
+		"title": "Default"
+	},
+  "hostname": "localhost",
+  "socketio": {
+    "port": 3001,
+    "address": "http://localhost"
+  },
+  "linkedin": {
+    "consumerKey": "4bjoe99fsanp",
+    "consumerSecret": "vxpmDBPt5lwGFixr",
+    "callbackURL": "http://localhost:3000/login/linkedin/callback",
+    "profileFields": ["id", "name", "email-address"]
+  },
+  "facebook": {
+    "clientID": "654245481273649",
+    "clientSecret": "7cbaa3b972706cea606db8ea6f91d758",
+    "callbackURL": "http://localhost:3000/login/facebook/callback"
+  },
+  "twitter": {
+    "consumer_key": "tKohI7O7umLc8BZuRNqNQ",
+    "consumer_secret": "pdUPzKoBk8Z0YXDc4Dl1Bwwp9LfYHXecej4wz8YkM",
+    "access_token": "819109560-i7AWgGDWwOLg5IljT9zgmnllHJNi2lkEmdsBNSDK",
+    "access_token_secret": "q4fWR1R5dvPDGBhuI36F8uPGgvgFZqJDBLphXYL1FRjhK"
+  },
+  "smtp": {
+    "service": "Gmail",
+    "auth": {
+      "user": "jgavanleeuwen@gmail.com",
+      "pass": "Element1"
+    }
+  },
+  "ns": {
+    "username": "jgavanleeuwen@outlook.com",
+    "password": "eq99mwBNVbGf_sE-mtRwizN9vASf2WQtIOHihat2iE70KJyskdz_xQ"
+  }
+}
