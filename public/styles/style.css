@@ -11,14 +11,24 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 h1 {
-  font-family: "museo-sans", sans-serif;
-  font-weight: 100;
+  font-family: "museo-slab", sans-serif;
+  font-weight: 300;
   font-size: 4rem;
 }
-h2 {
-  font-family: "museo-sans", sans-serif;
-  font-weight: 100;
+h1 .light {
   color: #666;
+  color: rgba(0, 0, 0, 0.3);
+  font-size: 3rem;
+}
+h2 {
+  font-family: 'museo-slab', sans-serif;
+  font-weight: 100;
+  color: #FFF;
+  margin-bottom: 40px;
+}
+h2.black {
+  color: #333;
+  font-weight: 300;
 }
 .success {
   color: #5cb85c;
@@ -32,18 +42,22 @@ p {
   font-size: .9rem;
   line-height: 2em;
 }
-html,
-body {
-  height: 100%;
+p.large {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 100;
 }
-section {
-  height: 100%;
+p a {
+  border-bottom: dotted 1px #333;
+  color: inherit;
+}
+p a:hover {
+  text-decoration: none;
+  color: #000;
 }
 section.wide {
-  padding: 30px 0;
-}
-section.wide p {
-  text-align: justify;
+  background: #eee;
+  padding: 60px 0 0 0;
 }
 .grayscale img {
   -webkit-filter: grayscale(100%);
@@ -69,26 +83,10 @@ section.wide p {
 .navbar {
   margin-bottom: 0;
 }
-.navbar img {
-  width: 30px;
-  height: 30px;
-  margin-right: 10px;
-}
-.navbar span {
-  color: #CCC;
-  margin-right: 10px;
-}
-.navbar span a {
-  color: #CCC;
-  border-bottom: 1px dotted #FFF;
-}
-.navbar span a:hover {
-  text-decoration: none;
-}
 .jumbotron {
-  background-size: cover;
-  padding: 100px 0 60px 0;
-  height: 100%;
+  padding: 200px 0 120px 0;
+  margin-bottom: 0;
+  background: #e7be55;
 }
 .jumbotron .container {
   padding: 0;
@@ -148,7 +146,7 @@ section.wide p {
 }
 footer {
   background-color: #333;
-  margin-top: 30px;
+  margin-top: 300px;
   padding: 30px;
 }
 footer span {

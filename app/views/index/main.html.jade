@@ -1,0 +1,32 @@
+!!! 5
+html
+	head
+		include ../head.html.jade
+	body(data-spy="scroll", data-target=".navbar")
+		
+		// Navigation
+		include ../menu.html.jade
+
+		// Hero
+		section#hero
+			.jumbotron
+				.container
+					.row
+						.col-md-12
+							center
+								h1
+									| coding 
+									span.light ×
+									|  knuckles
+								h2 the perfect combination
+		
+		// Section
+		section#intro.wide
+			.container
+				.row
+					.col-md-10.col-md-offset-1
+						center
+							h2.black How about you?!
+							p.large
+								| Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet mattis risus, aliquet vehicula lectus. Maecenas quis orci massa. Cras commodo lorem ut diam tempor cursus. Nullam hendrerit ut quam et aliquam. Cras <a href="#">mattis</a> enim <a href="#">metti</a> mattis congue. 
+							img(src='images/macbook.png')

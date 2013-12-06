@@ -1,5 +1,8 @@
 @import 'mixins';
 
+@gold: #e7be55;
+
+
 html {
 	font-size: 16px; // 1 rem
 }
@@ -9,15 +12,27 @@ body {
 }
 
 h1 {
-	font-family: "museo-sans", sans-serif;
-	font-weight: 100;
+	font-family: "museo-slab", sans-serif;
+	font-weight: 300;
 	font-size: 4rem;
+
+	.light {
+		color: #666;
+		color: rgba(0,0,0,.3);
+		font-size: 3rem;
+	}
 }
 
 h2 {
-	font-family: "museo-sans", sans-serif;
+	font-family: 'museo-slab', sans-serif;	
 	font-weight: 100;
-	color: #666;
+	color: #FFF;
+	margin-bottom: 40px;
+
+	&.black {
+		color: #333;
+		font-weight: 300;
+	}
 }
 
 .success {
@@ -33,19 +48,28 @@ p {
 	font-family: "Open Sans", sans-serif;
 	font-size: .9rem;
 	line-height: 2em;
-}
 
-html, body {
-	height: 100%;
+	&.large {
+		text-align: center;
+		font-size: 1.2rem;
+		font-weight: 100;
+	}
+
+	a {
+		border-bottom: dotted 1px #333;
+		color: inherit;
+
+		&:hover {
+			text-decoration: none;
+			color: #000;
+		}
+	}
 }
 
 section {
-	height: 100%;
 	&.wide {
-		padding: 30px 0;
-		p {
-			text-align: justify;
-		}
+		background: #eee;
+		padding: 60px 0 0 0;
 	}
 }
 
@@ -71,31 +95,13 @@ section {
 .navbar {
 	margin-bottom: 0;
 
-	img {
-		width: 30px;
-		height: 30px;
-		margin-right: 10px;
-	}
-
-	span {
-		color: #CCC;
-		margin-right: 10px;
-
-		a {
-			color: #CCC;
-			border-bottom: 1px dotted #FFF;
-
-			&:hover {
-				text-decoration: none;
-			}
-		}
-	}
+	
 }
 
 .jumbotron {
-	background-size: cover;
-	padding: 100px 0 60px 0;
-	height:100%;
+	padding: 200px 0 120px 0;
+	margin-bottom:0;
+	background: @gold;
 
 	.container {
 		padding: 0;
@@ -168,7 +174,7 @@ section {
 
 footer {
 	background-color: #333;
-	margin-top: 30px;
+	margin-top: 300px;
 	padding: 30px;
 
 	span {

@@ -21,7 +21,10 @@ require.config({
 		retina: '../plugins/retina/retina-1.1.0.min',
 
 		// D3
-		d3: 'http://d3js.org/d3.v3.min'
+		d3: 'http://d3js.org/d3.v3.min',
+
+		// Waypoints
+		waypoints: '../plugins/waypoints/waypoints'
 	},
 	shim: {
 		underscore: {

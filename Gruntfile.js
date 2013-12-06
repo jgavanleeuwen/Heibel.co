@@ -89,7 +89,7 @@ module.exports = function(grunt) {
 				}
 			},
 			html: {
-				files: ['app/views/**/*.html.ejs'],
+				files: ['app/views/**/*.html.jade'],
 				options: {
 					livereload: true
 				}
