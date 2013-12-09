@@ -10,7 +10,7 @@ define([
 
 			// Routes
 			routes: {
-				'' : 'index'
+				'*actions' : 'index'
 			},
 
 			index: function() {

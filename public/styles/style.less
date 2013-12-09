@@ -1,7 +1,47 @@
+// Imports
 @import 'mixins';
 
+// Variables
 @gold: #e7be55;
 
+// Mixins
+.arrowdown( @color, @top ) {
+	&:after {
+		width: 0;
+    height: 0;
+    margin-top: @top;
+    position: absolute;
+    content:"";
+    display:block;
+		border-left: 14px solid transparent;
+		border-right: 14px solid transparent;
+		border-top: 14px solid @color;
+    left: 50%;
+    margin-left: -14px;
+	}
+}
+
+.arrowup( @color, @top ) {
+	&:before {
+		width: 0;
+    height: 0;
+    margin-top: -@top;
+    position: absolute;
+    content:"";
+    display:block;
+		border-left: 14px solid transparent;
+		border-right: 14px solid transparent;
+		border-bottom: 14px solid @color;
+    left: 50%;
+    margin-left: -14px;
+	}
+}
+
+// Rest
+
+i.large {
+	font-size: 3rem;
+}
 
 html {
 	font-size: 16px; // 1 rem
@@ -15,6 +55,7 @@ h1 {
 	font-family: "museo-slab", sans-serif;
 	font-weight: 300;
 	font-size: 4rem;
+	padding-left: 50px;
 
 	.light {
 		color: #666;
@@ -33,10 +74,26 @@ h2 {
 		color: #333;
 		font-weight: 300;
 	}
+
+	&.strong {
+		font-weight: 300;
+	}
 }
 
-.success {
-	color: #5cb85c; 
+h3 {
+	color: #999;
+	font-family: 'museo-slab', sans-serif;
+	font-size: 1.2rem;
+
+	a {
+		border-bottom: dotted 1px #333;
+		color: #333;
+
+		&:hover {
+			text-decoration: none;
+			color: #000;
+		}
+	}
 }
 
 label {
@@ -46,13 +103,17 @@ label {
 
 p {
 	font-family: "Open Sans", sans-serif;
-	font-size: .9rem;
 	line-height: 2em;
 
 	&.large {
 		text-align: center;
 		font-size: 1.2rem;
 		font-weight: 100;
+	}
+
+	&.italic {
+		font-style: italic;
+		color: #999;
 	}
 
 	a {
@@ -67,110 +128,62 @@ p {
 }
 
 section {
+	overflow: hidden;
+
 	&.wide {
 		background: #eee;
 		padding: 60px 0 0 0;
 	}
-}
 
-.grayscale img {
-	-webkit-filter: grayscale(100%);
-	-moz-filter: grayscale(100%);
-	filter: grayscale(100%);
-	opacity: 0.2;
-	.transition();
-
-	&:hover {
-		opacity: 1.0;
-		-webkit-filter: grayscale(0%);
-		-moz-filter: grayscale(0%);
-		filter: grayscale(0%);
+	&.dark {
+		background: #111;
+		padding: 25px 0;
 	}
-}
 
-.alert {
-	margin-bottom: 0;
+	&.gold {
+		background: @gold;
+		padding: 60px 0;
+	}
+
+	&.white {
+		padding: 60px 0;
+	}
+
+	&.image {
+		width:100%;
+		height: 400px;
+		background-size: cover;
+		background-position: center center;
+
+		&.lap_image {
+			background-image: url('/images/tween/laptop.jpg')
+		}
+	}
 }
 
 .navbar {
 	margin-bottom: 0;
 
-	
+	.dropdown-menu {
+		a:hover {
+			background: #EEE;
+			color: inherit;
+		}
+	}	
 }
 
 .jumbotron {
 	padding: 200px 0 120px 0;
 	margin-bottom:0;
 	background: @gold;
+	overflow: hidden;
 
 	.container {
 		padding: 0;
 	}
 
-	p {
-		font-size: 1.2rem;
-		margin-bottom: 20px; 
-		line-height: 1.5em;
-	}
-
-	label {
-		font-size: 14px;
-	}
+	.arrowdown( @gold, 120px );
 }
-
-.form-signin {
-	max-width: 330px;
-	padding: 15px;
-	margin: 0 auto;
-
-	.form-signin-heading {
-		margin-bottom: 10px;
-	}
-
-	.checkbox {
-		margin-bottom: 10px;
-		font-weight: normal;
-	}
-
-	.form-control {
-		position: relative;
-		font-size: 16px;
-		height: auto;
-		padding: 10px;
-		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		box-sizing: border-box;
-
-		&:focus {
-			z-index: 2;
-		}
-	}
-
-	input[type="text"] {
-		margin-bottom: -1px;
-		border-bottom-left-radius: 0;
-		border-bottom-right-radius: 0;
-	}
-
-	input[type="password"], input[type="password"] {
-		margin-bottom: 10px;
-	}
-
-	.help-block {
-		color: #FF0000;
-		font-size: .7em;
-	}
-}
-
-.btn-group.facebook a {
-	background-color: #3b5998;
-	border-color: #2e487f;
-}
-.btn-group.facebook a:hover {
-	background-color: #2e487f;
-	border-color: #233a6a;
-}
-
 
 footer {
 	background-color: #333;
@@ -180,4 +193,81 @@ footer {
 	span {
 		color: white;
 	}
+}
+
+#skills {
+	h2 {
+		position: relative;
+		float:left;
+		margin: 0;
+	}
+
+	.button {
+		font-family: "museo-slab";
+		background: @gold;
+		color: #111;
+		padding: 10px 30px;
+		position: relative;
+		float: left;
+		font-size: 1rem;
+		font-weight: bold;
+	}
+}
+
+#text {
+	.arrowdown( #FFF, 60px );
+}
+
+#data {
+	h2 {
+		margin-bottom: 25px;
+	}
+}
+
+#examples {
+	.arrowup( #EEE, 74px );
+
+	.carousel-inner {
+		min-height: 300px;
+		#lines {
+			width: 400px;
+			height: 180px;
+			margin: 40px 0;
+		}
+		img {
+			margin: 20px 0;
+		}
+	}
+
+	.carousel-indicators {
+		position: relative;
+		bottom: inherit;
+		margin-bottom: 50px;
+
+		li {
+			margin: 0 3px;
+			border: none;
+			background: #CCC;
+			width: 8px;
+			height: 8px;
+
+			&.active {
+				background: #333;
+				width: 8px;
+				height: 8px;
+			}
+		}
+	}
+
+	h2 {
+		margin-bottom: 0;
+	}
+}
+
+.area {
+  fill: #EEE;
+}
+
+.area2 {
+	fill: #CCC;
 }

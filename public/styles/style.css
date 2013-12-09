@@ -4,6 +4,9 @@
     A set of useful LESS mixins
     More info at: http://lesselements.com
   ---------------------------------------------------*/
+i.large {
+  font-size: 3rem;
+}
 html {
   font-size: 16px;
 }
@@ -14,6 +17,7 @@ h1 {
   font-family: "museo-slab", sans-serif;
   font-weight: 300;
   font-size: 4rem;
+  padding-left: 50px;
 }
 h1 .light {
   color: #666;
@@ -30,8 +34,21 @@ h2.black {
   color: #333;
   font-weight: 300;
 }
-.success {
-  color: #5cb85c;
+h2.strong {
+  font-weight: 300;
+}
+h3 {
+  color: #999;
+  font-family: 'museo-slab', sans-serif;
+  font-size: 1.2rem;
+}
+h3 a {
+  border-bottom: dotted 1px #333;
+  color: #333;
+}
+h3 a:hover {
+  text-decoration: none;
+  color: #000;
 }
 label {
   font-family: 'Open Sans', sans-serif;
@@ -39,13 +56,16 @@ label {
 }
 p {
   font-family: "Open Sans", sans-serif;
-  font-size: .9rem;
   line-height: 2em;
 }
 p.large {
   text-align: center;
   font-size: 1.2rem;
   font-weight: 100;
+}
+p.italic {
+  font-style: italic;
+  color: #999;
 }
 p a {
   border-bottom: dotted 1px #333;
@@ -55,94 +75,61 @@ p a:hover {
   text-decoration: none;
   color: #000;
 }
+section {
+  overflow: hidden;
+}
 section.wide {
   background: #eee;
   padding: 60px 0 0 0;
 }
-.grayscale img {
-  -webkit-filter: grayscale(100%);
-  -moz-filter: grayscale(100%);
-  filter: grayscale(100%);
-  opacity: 0.2;
-  -webkit-transition: all 0.2s ease-out;
-  -moz-transition: all 0.2s ease-out;
-  -o-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out;
-  -webkit-animation-iteration-count: 1;
-  -moz-animation-iteration-count: 1;
+section.dark {
+  background: #111;
+  padding: 25px 0;
 }
-.grayscale img:hover {
-  opacity: 1.0;
-  -webkit-filter: grayscale(0%);
-  -moz-filter: grayscale(0%);
-  filter: grayscale(0%);
+section.gold {
+  background: #e7be55;
+  padding: 60px 0;
 }
-.alert {
-  margin-bottom: 0;
+section.white {
+  padding: 60px 0;
+}
+section.image {
+  width: 100%;
+  height: 400px;
+  background-size: cover;
+  background-position: center center;
+}
+section.image.lap_image {
+  background-image: url('/images/tween/laptop.jpg');
 }
 .navbar {
   margin-bottom: 0;
+}
+.navbar .dropdown-menu a:hover {
+  background: #EEE;
+  color: inherit;
 }
 .jumbotron {
   padding: 200px 0 120px 0;
   margin-bottom: 0;
   background: #e7be55;
+  overflow: hidden;
 }
 .jumbotron .container {
   padding: 0;
 }
-.jumbotron p {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-  line-height: 1.5em;
-}
-.jumbotron label {
-  font-size: 14px;
-}
-.form-signin {
-  max-width: 330px;
-  padding: 15px;
-  margin: 0 auto;
-}
-.form-signin .form-signin-heading {
-  margin-bottom: 10px;
-}
-.form-signin .checkbox {
-  margin-bottom: 10px;
-  font-weight: normal;
-}
-.form-signin .form-control {
-  position: relative;
-  font-size: 16px;
-  height: auto;
-  padding: 10px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.form-signin .form-control:focus {
-  z-index: 2;
-}
-.form-signin input[type="text"] {
-  margin-bottom: -1px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
-.form-signin input[type="password"],
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
-}
-.form-signin .help-block {
-  color: #FF0000;
-  font-size: .7em;
-}
-.btn-group.facebook a {
-  background-color: #3b5998;
-  border-color: #2e487f;
-}
-.btn-group.facebook a:hover {
-  background-color: #2e487f;
-  border-color: #233a6a;
+.jumbotron:after {
+  width: 0;
+  height: 0;
+  margin-top: 120px;
+  position: absolute;
+  content: "";
+  display: block;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-top: 14px solid #e7be55;
+  left: 50%;
+  margin-left: -14px;
 }
 footer {
   background-color: #333;
@@ -151,4 +138,85 @@ footer {
 }
 footer span {
   color: white;
+}
+#skills h2 {
+  position: relative;
+  float: left;
+  margin: 0;
+}
+#skills .button {
+  font-family: "museo-slab";
+  background: #e7be55;
+  color: #111;
+  padding: 10px 30px;
+  position: relative;
+  float: left;
+  font-size: 1rem;
+  font-weight: bold;
+}
+#text:after {
+  width: 0;
+  height: 0;
+  margin-top: 60px;
+  position: absolute;
+  content: "";
+  display: block;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-top: 14px solid #ffffff;
+  left: 50%;
+  margin-left: -14px;
+}
+#data h2 {
+  margin-bottom: 25px;
+}
+#examples:before {
+  width: 0;
+  height: 0;
+  margin-top: -74px;
+  position: absolute;
+  content: "";
+  display: block;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-bottom: 14px solid #eeeeee;
+  left: 50%;
+  margin-left: -14px;
+}
+#examples .carousel-inner {
+  min-height: 300px;
+}
+#examples .carousel-inner #lines {
+  width: 400px;
+  height: 180px;
+  margin: 40px 0;
+}
+#examples .carousel-inner img {
+  margin: 20px 0;
+}
+#examples .carousel-indicators {
+  position: relative;
+  bottom: inherit;
+  margin-bottom: 50px;
+}
+#examples .carousel-indicators li {
+  margin: 0 3px;
+  border: none;
+  background: #CCC;
+  width: 8px;
+  height: 8px;
+}
+#examples .carousel-indicators li.active {
+  background: #333;
+  width: 8px;
+  height: 8px;
+}
+#examples h2 {
+  margin-bottom: 0;
+}
+.area {
+  fill: #EEE;
+}
+.area2 {
+  fill: #CCC;
 }

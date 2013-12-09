@@ -2,8 +2,9 @@
 html
 	head
 		include ../head.html.jade
-	body(data-spy="scroll", data-target=".navbar")
-		
+	
+	body
+
 		// Navigation
 		include ../menu.html.jade
 
@@ -20,13 +21,129 @@ html
 									|  knuckles
 								h2 the perfect combination
 		
-		// Section
-		section#intro.wide
+		// About
+		section#about.wide
 			.container
 				.row
 					.col-md-10.col-md-offset-1
 						center
 							h2.black How about you?!
 							p.large
-								| Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet mattis risus, aliquet vehicula lectus. Maecenas quis orci massa. Cras commodo lorem ut diam tempor cursus. Nullam hendrerit ut quam et aliquam. Cras <a href="#">mattis</a> enim <a href="#">metti</a> mattis congue. 
-							img(src='images/macbook.png')
+								| Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet mattis risus, aliquet vehicula lectus. Maecenas quis orci 
+								| massa. Cras commodo lorem ut diam tempor cursus. Nullam hendrerit ut quam et aliquam. Cras 
+								a(href="#") mattis
+								|  enim 
+								a(href="#") metti
+								|  mattis congue. 
+							img.img-responsive(src='images/macbook.png')
+
+
+		// Text
+		section#text.white
+			.container
+				.row
+					.col-md-6
+						.row
+							.col-md-10.col-md-offset-1
+								h3 Who is Heibel?
+								hr
+								p
+									| Sed adipiscing interdum lobortis. Quisque eget fermentum est. Pellentesque eget dolor bibendum, fringilla purus eget, consectetur orci.
+									| Pellentesque faucibus elit eu ultricies suscipit. Aliquam ultricies erat eget suscipit malesuada.
+								p
+									| Aliquam ultricies erat eget suscipit malesuada.
+								p
+									a(href='#').button Read more!
+					.col-md-6
+						.row
+							.col-md-10.col-md-offset-1
+								h3 Who can we do for you?
+								hr
+								p
+									| In sagittis ac justo non vulputate. Nam viverra luctus interdum. Nam consequat aliquet consequat. Nunc vitae vulputate mauris. Vivamus aliquam, diam ac 
+									| egestas rutrum, velit nisi convallis tellus, ac ornare magna dui quis est.
+								p
+									a(href='#').button Read more!
+
+		// Pause
+		section.image.lap_image
+
+		// Big data
+		section#data.gold
+			.container
+				.row
+					.col-md-4
+						.row
+							.col-md-10.col-md-offset-1
+								center
+									i.fa.fa-flask.large
+									h2.black Big data
+									p
+										| Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet mattis risus, aliquet vehicula.
+									p
+										a(href='#').button Read more!
+					.col-md-4
+						.row
+							.col-md-10.col-md-offset-1
+								center
+									i.fa.fa-sitemap.large
+									h2.black Responsiveness
+									p
+										| Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet mattis risus, aliquet vehicula. 
+									p
+										a(href='#').button Read more!
+					.col-md-4
+						.row
+							.col-md-10.col-md-offset-1
+								center
+									i.fa.fa-rocket.large
+									h2.black Layout
+									p
+										| Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet mattis risus, aliquet.
+									p
+										a(href='#').button Read more!
+
+		// About
+		section#examples.wide
+			.container
+				.row
+					.col-md-10.col-md-offset-1
+						center
+							h2.black Lessons I've learned
+				.row 
+					#carousel.carousel.slide(data-ride='carousel', data-interval='3000ms')
+						.carousel-inner
+							.item
+								.row
+									.col-md-12
+										center
+											h3 
+												| Setting up a good automated 
+												a(href='#') workflow
+												|  will speed up coding with hours..
+							.item.active
+								.row
+									.col-md-12
+										center
+											h3
+												| Collecting 
+												a(href='#') big data
+												|  from the beginning is essential. Use it much and wisely.
+											#lines
+											p.italic * Collected tweets over a period of one month × sentiment
+							.item
+								.row
+									.col-md-12
+										center
+											h3 Choose a database that suits your needs. Or combine them!
+						ol.carousel-indicators
+							li(data-target='#carousel', data-slide-to='0')
+							li.active(data-target='#carousel', data-slide-to='1')
+							li(data-target='#carousel', data-slide-to='2')
+
+		section.dark
+			.container
+				.row
+					.col-md-12
+						h2
+							Test

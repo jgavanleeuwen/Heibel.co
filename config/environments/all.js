@@ -38,7 +38,6 @@ module.exports = function() {
 	// middleware available as separate modules.
 	this.use(poweredBy('Locomotive'));
 	this.use(express.logger());
-	this.use(express.favicon());
 	this.use(express.static(__dirname + '/../../public'));
 	this.use(express.bodyParser());
 	this.use(express.methodOverride());
@@ -53,6 +52,6 @@ module.exports = function() {
 	this.use(this.router);
 
 	this.use(function(req, res, next) {
-		res.render('404.html.ejs', { status: 404, url: req.url});
+		res.redirect('/');
 	});
 };

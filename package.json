@@ -24,7 +24,8 @@
     "string": "~1.7.0",
     "bcrypt-nodejs": "0.0.3",
     "underscore": "~1.5.2",
-    "jade": "~0.35.0"
+    "jade": "~0.35.0",
+    "sentiment": "~0.2.1"
   },
   "devDependencies": {
     "grunt-contrib-watch": "~0.5.3",

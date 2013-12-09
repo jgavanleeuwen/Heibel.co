@@ -2,10 +2,11 @@ require([
 	"backbone",
 	"app",
 	"router",
+	"events/dispatcher",
 	"scrollto",
 	"waypoints"
 ],
-function(Backbone, App, Router) {
+function(Backbone, App, Router, Dispatcher, ScrollTo, Waypoints) {
 
 	App.router = new Router();
 	Backbone.history.start({ pushState: true, root: '' });
@@ -24,12 +25,15 @@ function(Backbone, App, Router) {
 
 	$(".navbar a[href^='#']").click( function(e) {
 		e.preventDefault();
-		$.scrollTo($(this).attr('href'), 250, {axis: 'y', offset: {top:0} });
+		$.scrollTo($(this).attr('href'), 250, {axis: 'y', offset: {top:-50} });
 	});
 
 	$('section').waypoint(function(direction) {
 		$(this).addClass('viewport');
-	}, { offset: 300 });
+		Dispatcher.trigger('waypoint', { id: $(this).attr('id')});
+	}, { offset: 800 });
+
+	$('body').scrollspy({ target: '.navbar', offset: 51 });
 
 
 
