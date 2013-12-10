@@ -170,6 +170,9 @@ footer span {
 #data h2 {
   margin-bottom: 25px;
 }
+#examples {
+  background: #DDD;
+}
 #examples:before {
   width: 0;
   height: 0;
@@ -179,7 +182,7 @@ footer span {
   display: block;
   border-left: 14px solid transparent;
   border-right: 14px solid transparent;
-  border-bottom: 14px solid #eeeeee;
+  border-bottom: 14px solid #dddddd;
   left: 50%;
   margin-left: -14px;
 }
@@ -215,7 +218,7 @@ footer span {
   margin-bottom: 0;
 }
 .area {
-  fill: #EEE;
+  fill: #DDD;
 }
 .area2 {
   fill: #CCC;

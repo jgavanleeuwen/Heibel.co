@@ -8,7 +8,7 @@ define([
 
 			model: Model,
 
-			urlRoot: "http://localhost:3000/tweets",
+			urlRoot: "http://localhost:3010/tweets",
 
 			url: function() {
 				return this.urlRoot;

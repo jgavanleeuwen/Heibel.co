@@ -5,8 +5,9 @@ define([
 	'getbootstrap',
 	'modernizr',
 	'events/dispatcher',
-	'd3'
-], function($, _, Backbone, GetBootstrap, Modernizr, Dispatcher, D3) {
+	'd3',
+	'collections/tweets'
+], function($, _, Backbone, GetBootstrap, Modernizr, Dispatcher, D3, TweetCollection) {
 		var indexView = Backbone.View.extend({
 			el: 'body',
 
@@ -30,7 +31,28 @@ define([
 				var self = this;
 
 				this.template = this.$el.html();
-				this.drawGraph([4,3,67,25,13,54,41,3,22,56]);
+				//this.drawGraph([4,3,67,25,13,54,41,3,22,56]);
+
+				this.tweetCollection = new TweetCollection();
+				this.tweetCollection.fetch({
+					success: function(collection, xhr, response) {
+						
+						self.happyTweets = _.toArray(_.countBy(_.pluck(_.reject(_.pluck(collection.models, 'attributes'), function(m) {
+							return m.sentiment > 0;
+						}), 'created_at'), function(d) {
+							return new Date(d).getHours();
+						}));
+
+						self.sadTweets = _.toArray(_.countBy(_.pluck(_.reject(_.pluck(collection.models, 'attributes'), function(m) {
+							console.log(m.text);
+							return m.sentiment <= 0;
+						}), 'created_at'), function(d) {
+							return new Date(d).getHours();
+						}));
+
+						self.drawGraph(self.happyTweets);
+					}
+				});
 				
 			},
 
@@ -39,8 +61,8 @@ define([
 				var y = d3.scale.linear().domain([0, _.max(data)]).range([0, 140]);
 
 				var graph = d3.select('#lines').append("svg")
-					.attr("width", "400")
-					.attr("height", "260");
+					.attr("width", "374")
+					.attr("height", "300");
 
 				var filter = graph.append("defs")
 					.append("filter")
@@ -69,7 +91,7 @@ define([
 					.y0(0)
 					.y1(function(d) { return 155 - y(d); });
 
-				graph.append('path')
+				var a = graph.append('path')
 					.datum(data)
 					.attr('class', 'area')
 					.attr('d', area);
@@ -86,11 +108,41 @@ define([
 						.attr("cx", function(d, i) { return x(i); }) 
 						.attr("cy", function(d) { return 155 - y(d); }) 
 						.attr("r", 4)
-						.attr('fill', '#FFF')
+						.attr('fill', '#DDD')
+						.style("stroke", '#FFF')
+						.style("stroke-width", 3)
 						.attr("opacity", 0) 
 						.on("mouseover", function(d) { console.log(d); });
 
 				var totalLength = path.node().getTotalLength();
+
+				/*window.setInterval( function() {
+*/			var self = this;
+				var mood = true;
+				var arr;
+
+				window.setInterval(function(){
+
+					if( mood ) {
+						arr = self.sadTweets;
+					} else {
+						arr = self.happyTweets;
+					}
+					mood = !mood;
+
+					path2.transition()
+						.attr("d", line(arr))
+							.duration(250)
+
+					path.transition()
+						.attr("d", line(arr))
+							.duration(250)
+
+					a.transition()
+						.attr('d', area(arr))
+							.duration(250)
+
+				}, 2000);
 
 				path
 					.attr("stroke-dasharray", totalLength + " " + totalLength)

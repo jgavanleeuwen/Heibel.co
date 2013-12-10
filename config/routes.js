@@ -35,4 +35,5 @@ module.exports = function routes() {
 
 	this.resources('login');
 	this.resource('account');
+	this.resources('tweets');
 };
