@@ -188,11 +188,18 @@ footer span {
 }
 #examples .carousel-inner {
   min-height: 300px;
+  position: relative;
 }
-#examples .carousel-inner #lines {
+#examples .carousel-inner #lines,
+#examples .carousel-inner #workflow {
   width: 400px;
   height: 180px;
   margin: 40px 0;
+}
+#examples .carousel-inner #workflow {
+  width: 280px;
+  height: 220px;
+  margin: 40px 0 0 0;
 }
 #examples .carousel-inner img {
   margin: 20px 0;

@@ -35,6 +35,10 @@ function(Backbone, App, Router, Dispatcher, ScrollTo, Waypoints) {
 
 	$('body').scrollspy({ target: '.navbar', offset: 51 });
 
+	$('#carousel').on('slid.bs.carousel', function(e) {
+		console.log($(this).find('div.active').index());
+	});
+
 
 
 });
