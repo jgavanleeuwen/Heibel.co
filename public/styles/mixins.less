@@ -173,3 +173,10 @@
   -webkit-background-clip: @argument;
   background-clip: @argument;
 }
+.custom-animation(@name: blink, @time: 1s ) {
+  -webkit-animation: @name @time linear infinite;
+  -moz-animation: @name @time linear infinite;
+  -ms-animation: @name @time linear infinite;
+  -o-animation: @name @time linear infinite;
+  animation: @name @time linear infinite;
+}

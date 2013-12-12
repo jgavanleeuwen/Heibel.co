@@ -27,7 +27,7 @@ require.config({
 		waypoints: '../plugins/waypoints/waypoints',
 
 		// Flatshadow
-		flatshadow: '../plugins/flatshadow/flatshadow.min'
+		typer: '../plugins/typer/jquery.typer'
 	},
 	shim: {
 		underscore: {

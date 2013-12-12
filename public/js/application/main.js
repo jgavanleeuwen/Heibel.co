@@ -4,8 +4,7 @@ require([
 	"router",
 	"events/dispatcher",
 	"scrollto",
-	"waypoints",
-	"flatshadow"
+	"waypoints"
 ],
 function(Backbone, App, Router, Dispatcher, ScrollTo, Waypoints, FlatShadow) {
 
@@ -26,7 +25,6 @@ function(Backbone, App, Router, Dispatcher, ScrollTo, Waypoints, FlatShadow) {
 
 	// Scrollto plugin
 	$(".navbar a[href^='#']").click( function(e) {
-		e.preventDefault();
 		$.scrollTo($(this).attr('href'), 250, {axis: 'y', offset: {top:-50} });
 	});
 
@@ -42,8 +40,5 @@ function(Backbone, App, Router, Dispatcher, ScrollTo, Waypoints, FlatShadow) {
 	$('#carousel').on('slid.bs.carousel', function(e) {
 		Dispatcher.trigger('carousel:slide', {slide: $(this).find('div.active').index()});
 	});
-
-	// Flatshadow
-	$('.social i').flatshadow({ angle: 'SE', color: "#222" });
 
 });

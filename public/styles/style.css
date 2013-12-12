@@ -4,6 +4,34 @@
     A set of useful LESS mixins
     More info at: http://lesselements.com
   ---------------------------------------------------*/
+@keyframes blink {
+  0% {
+    border-color: #222;
+  }
+  45% {
+    border-color: #222;
+  }
+  55% {
+    border-color: transparent;
+  }
+  100% {
+    border-color: transparent;
+  }
+}
+@-webkit-keyframes blink {
+  0% {
+    border-color: #222;
+  }
+  45% {
+    border-color: #222;
+  }
+  55% {
+    border-color: transparent;
+  }
+  100% {
+    border-color: transparent;
+  }
+}
 i.large {
   font-size: 3rem;
 }
@@ -17,13 +45,20 @@ h1 {
   font-family: "museo-slab", sans-serif;
   font-weight: 300;
   font-size: 4rem;
-  padding-left: 50px;
   color: #222;
+}
+h1 span.typer {
+  -webkit-animation: blink 1s linear infinite;
+  -moz-animation: blink 1s linear infinite;
+  -ms-animation: blink 1s linear infinite;
+  -o-animation: blink 1s linear infinite;
+  animation: blink 1s linear infinite;
+  border-right: 3px solid transparent;
+  padding-right: 5px;
 }
 h1 .light {
   color: #666;
   color: rgba(0, 0, 0, 0.3);
-  font-size: 3rem;
 }
 h2 {
   font-family: 'museo-slab', sans-serif;
@@ -146,7 +181,7 @@ section.image.lap_image {
 }
 #footer .social i {
   font-size: 1.1rem;
-  color: #111;
+  color: #444;
 }
 #footer a {
   margin-left: 10px;
@@ -226,6 +261,9 @@ section.image.lap_image {
 }
 #examples h2 {
   margin-bottom: 0;
+}
+i.fa-flatshadow {
+  text-shadow: #181818 1px 1px 0px, #181818 2px 2px 0px, #181818 3px 3px 0px, #181818 4px 4px 0px, #181818 5px 5px 0px, #181818 6px 6px 0px, #181818 7px 7px 0px, #181818 8px 8px 0px, #181818 9px 9px 0px, #181818 10px 10px 0px, #181818 11px 11px 0px, #181818 12px 12px 0px, #181818 13px 13px 0px, #181818 14px 14px 0px, #181818 15px 15px 0px, #181818 16px 16px 0px, #181818 17px 17px 0px, #181818 18px 18px 0px;
 }
 .area {
   fill: #DDD;

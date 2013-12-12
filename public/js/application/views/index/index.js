@@ -6,10 +6,11 @@ define([
 	'modernizr',
 	'events/dispatcher',
 	'd3',
+	'typer',
 	'collections/tweets',
 	'views/index/helpers/workflow',
 	'views/index/helpers/chart'
-], function($, _, Backbone, GetBootstrap, Modernizr, Dispatcher, D3, TweetCollection, WorkflowView, ChartView) {
+], function($, _, Backbone, GetBootstrap, Modernizr, Dispatcher, D3, Typer, TweetCollection, WorkflowView, ChartView) {
 		var indexView = Backbone.View.extend({
 			el: 'body',
 
@@ -42,6 +43,11 @@ define([
 
 				this.workflowView = new WorkflowView().render();
 				this.chartView = new ChartView().render();
+
+				$('span.typer').typer([
+						'<span class="light">put "</span>Heibel.co<span class="light">"</span>',
+						'<span class="light">put "</span>Developer<span class="light">"</span>'
+					], { endless: true, delay: 2500 });
 				
 			}
 

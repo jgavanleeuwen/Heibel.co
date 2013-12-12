@@ -9,18 +9,16 @@ html
 		include ../menu.html.jade
 
 		// Hero
-		section#hero
+		section#hero.fixed
 			.jumbotron
 				.container
 					.row
 						.col-md-12
 							center
-								img(src="images/logo.png")
-								h1
-									| coding 
-									span.light ×
-									|  knuckles
-								h2 the perfect combination
+								h1(contenteditable=true)
+									span.light > 
+									span.typer
+								h2 I build applications and MVP's
 		
 		// About
 		section#about.wide
@@ -162,8 +160,8 @@ html
 					.col-md-2.col-md-offset-1
 						h3 Social
 						.social
-							i.fa.fa-twitter.fa-fw
+							i.fa.fa-twitter.fa-flatshadow
 						.social
-							i.fa.fa-linkedin.fa-fw
+							i.fa.fa-linkedin.fa-flatshadow
 						.social
-							i.fa.fa-github.fa-fw
+							i.fa.fa-github.fa-flatshadow

@@ -1,5 +1,6 @@
 // Imports
 @import 'mixins';
+@import 'animation';
 
 // Variables
 @gold: #e7be55;
@@ -53,13 +54,16 @@ h1 {
 	font-family: "museo-slab", sans-serif;
 	font-weight: 300;
 	font-size: 4rem;
-	padding-left: 50px;
 	color: #222;
 
+	span.typer {
+		.custom-animation();
+		border-right: 3px solid transparent;
+		padding-right: 5px;
+	}
 	.light {
 		color: #666;
 		color: rgba(0,0,0,.3);
-		font-size: 3rem;
 	}
 }
 
@@ -199,7 +203,7 @@ section {
 
 		i {
 			font-size: 1.1rem;
-			color: #111;
+			color: #444;
 		}
 	}
 	a {
@@ -270,6 +274,27 @@ section {
 	h2 {
 		margin-bottom: 0;
 	}
+}
+
+i.fa-flatshadow {
+	text-shadow: 	rgb(24, 24, 24) 1px 1px 0px, 
+								rgb(24, 24, 24) 2px 2px 0px, 
+								rgb(24, 24, 24) 3px 3px 0px, 
+								rgb(24, 24, 24) 4px 4px 0px, 
+								rgb(24, 24, 24) 5px 5px 0px, 
+								rgb(24, 24, 24) 6px 6px 0px, 
+								rgb(24, 24, 24) 7px 7px 0px, 
+								rgb(24, 24, 24) 8px 8px 0px, 
+								rgb(24, 24, 24) 9px 9px 0px, 
+								rgb(24, 24, 24) 10px 10px 0px, 
+								rgb(24, 24, 24) 11px 11px 0px, 
+								rgb(24, 24, 24) 12px 12px 0px, 
+								rgb(24, 24, 24) 13px 13px 0px, 
+								rgb(24, 24, 24) 14px 14px 0px, 
+								rgb(24, 24, 24) 15px 15px 0px, 
+								rgb(24, 24, 24) 16px 16px 0px, 
+								rgb(24, 24, 24) 17px 17px 0px, 
+								rgb(24, 24, 24) 18px 18px 0px;
 }
 
 .area {
