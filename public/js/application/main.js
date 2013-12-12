@@ -4,13 +4,15 @@ require([
 	"router",
 	"events/dispatcher",
 	"scrollto",
-	"waypoints"
+	"waypoints",
+	"flatshadow"
 ],
-function(Backbone, App, Router, Dispatcher, ScrollTo, Waypoints) {
+function(Backbone, App, Router, Dispatcher, ScrollTo, Waypoints, FlatShadow) {
 
 	App.router = new Router();
 	Backbone.history.start({ pushState: true, root: '' });
 
+	// Some links stay inline
 	$(document).on("click", "a[href]:not([data-bypass])", function(evt) {
 
 		var href = { prop: $(this).prop("href"), attr: $(this).attr("href") };
@@ -20,25 +22,28 @@ function(Backbone, App, Router, Dispatcher, ScrollTo, Waypoints) {
 			evt.preventDefault();
 			Backbone.history.navigate(href.attr, false);
 		}
-
 	});
 
+	// Scrollto plugin
 	$(".navbar a[href^='#']").click( function(e) {
 		e.preventDefault();
 		$.scrollTo($(this).attr('href'), 250, {axis: 'y', offset: {top:-50} });
 	});
 
+	// Waypoints plugin
 	$('section').waypoint(function(direction) {
-		$(this).addClass('viewport');
 		Dispatcher.trigger('waypoint', { id: $(this).attr('id')});
-	}, { offset: 800 });
+	}, { offset: 100 });
 
+	// Scrollspy plugin
 	$('body').scrollspy({ target: '.navbar', offset: 51 });
 
+	// Carousel plugin
 	$('#carousel').on('slid.bs.carousel', function(e) {
-		console.log($(this).find('div.active').index());
+		Dispatcher.trigger('carousel:slide', {slide: $(this).find('div.active').index()});
 	});
 
-
+	// Flatshadow
+	$('.social i').flatshadow({ angle: 'SE', color: "#222" });
 
 });

@@ -113,7 +113,7 @@ html
 				.row 
 					#carousel.carousel.slide(data-ride='carousel', data-interval='3000ms')
 						.carousel-inner
-							.item
+							.item.active
 								.row
 									.col-md-12
 										center
@@ -123,7 +123,7 @@ html
 												|  from the beginning is essential. Use it much and wisely.
 											#lines
 											p.italic * Collected tweets over a period of one month × sentiment
-							.item.active
+							.item
 								.row
 									.col-md-12
 										center
@@ -132,20 +132,37 @@ html
 												a(href='#') workflow
 												|  will speed up coding with hours..
 											#workflow
-											p.italic * Collected tweets over a period of one month × sentiment
+											p.italic * I like to use Sublime + Grunt + LiveReload
 							.item
 								.row
 									.col-md-12
 										center
 											h3 Choose a database that suits your needs. Or combine them!
 						ol.carousel-indicators
-							li(data-target='#carousel', data-slide-to='0')
-							li.active(data-target='#carousel', data-slide-to='1')
+							li.active(data-target='#carousel', data-slide-to='0')
+							li(data-target='#carousel', data-slide-to='1')
 							li(data-target='#carousel', data-slide-to='2')
 
-		section.dark
+		section#footer.dark
 			.container
 				.row
-					.col-md-12
-						h2
-							Test
+					.col-md-5
+						h3 Want to hire me?
+						p
+							| Donec consequat fringilla libero, ac sollicitudin nibh volutpat at. Suspendisse adipiscing magna nec elit condimentum, ac ullamcorper purus tincidunt. 
+					.col-md-2.col-md-offset-1
+						h3 Contact
+						p
+							i.fa.fa-envelope  
+							a(href="mailto:mail@heibel.co") mail@heibel.co
+						p
+							i.fa.fa-skype
+							a(href="skype:jgavanleeuwen") jgavanleeuwen
+					.col-md-2.col-md-offset-1
+						h3 Social
+						.social
+							i.fa.fa-twitter.fa-fw
+						.social
+							i.fa.fa-linkedin.fa-fw
+						.social
+							i.fa.fa-github.fa-fw

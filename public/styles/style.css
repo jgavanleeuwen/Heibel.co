@@ -84,7 +84,7 @@ section.wide {
 }
 section.dark {
   background: #111;
-  padding: 25px 0;
+  padding: 60px 0;
 }
 section.gold {
   background: #e7be55;
@@ -131,28 +131,30 @@ section.image.lap_image {
   left: 50%;
   margin-left: -14px;
 }
-footer {
-  background-color: #333;
-  margin-top: 300px;
-  padding: 30px;
-}
-footer span {
-  color: white;
-}
-#skills h2 {
+#footer .social {
   position: relative;
   float: left;
-  margin: 0;
+  background: #222;
+  text-align: center;
+  line-height: 30px;
+  margin-right: 10px;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 30px;
+  height: 30px;
 }
-#skills .button {
-  font-family: "museo-slab";
-  background: #e7be55;
+#footer .social i {
+  font-size: 1.1rem;
   color: #111;
-  padding: 10px 30px;
-  position: relative;
-  float: left;
-  font-size: 1rem;
-  font-weight: bold;
+}
+#footer a {
+  margin-left: 10px;
+}
+#footer a:hover {
+  color: #AAA;
+}
+#footer p {
+  margin-bottom: 0;
 }
 #text:after {
   width: 0;
@@ -199,7 +201,7 @@ footer span {
 #examples .carousel-inner #workflow {
   width: 280px;
   height: 220px;
-  margin: 40px 0 0 0;
+  margin: 30px 0 10px 0;
 }
 #examples .carousel-inner img {
   margin: 20px 0;

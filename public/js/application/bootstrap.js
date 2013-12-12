@@ -24,7 +24,10 @@ require.config({
 		d3: 'http://d3js.org/d3.v3.min',
 
 		// Waypoints
-		waypoints: '../plugins/waypoints/waypoints'
+		waypoints: '../plugins/waypoints/waypoints',
+
+		// Flatshadow
+		flatshadow: '../plugins/flatshadow/flatshadow.min'
 	},
 	shim: {
 		underscore: {

@@ -37,8 +37,6 @@
 	}
 }
 
-// Rest
-
 i.large {
 	font-size: 3rem;
 }
@@ -137,7 +135,7 @@ section {
 
 	&.dark {
 		background: #111;
-		padding: 25px 0;
+		padding: 60px 0;
 	}
 
 	&.gold {
@@ -185,32 +183,33 @@ section {
 	.arrowdown( @gold, 120px );
 }
 
-footer {
-	background-color: #333;
-	margin-top: 300px;
-	padding: 30px;
-
-	span {
-		color: white;
-	}
-}
-
-#skills {
-	h2 {
-		position: relative;
-		float:left;
-		margin: 0;
-	}
-
-	.button {
-		font-family: "museo-slab";
-		background: @gold;
-		color: #111;
-		padding: 10px 30px;
+#footer {
+	.social {
 		position: relative;
 		float: left;
-		font-size: 1rem;
-		font-weight: bold;
+		background: #222;
+		text-align: center;
+		line-height: 30px;
+		margin-right: 10px;
+		border-radius: 50%;
+		overflow: hidden;
+		width: 30px;
+		height: 30px;
+
+		i {
+			font-size: 1.1rem;
+			color: #111;
+		}
+	}
+	a {
+		margin-left: 10px;
+
+		&:hover {
+			color: #AAA;
+		}
+	}
+	p {
+		margin-bottom: 0;
 	}
 }
 
@@ -240,7 +239,7 @@ footer {
 		#workflow {
 			width: 280px;
 			height: 220px;
-			margin: 40px 0 0 0;
+			margin: 30px 0 10px 0;
 		}
 		img {
 			margin: 20px 0;
