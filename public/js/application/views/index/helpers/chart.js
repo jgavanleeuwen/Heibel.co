@@ -33,7 +33,7 @@ define([
 					})));
 
 					self.tweets.push(_.toArray(_.countBy(_.pluck(_.reject(_.pluck(collection.models, 'attributes'), function(m) {
-						return m.sentiment == 0;
+						return m.sentiment === 0;
 					}), 'created_at'), function(d) {
 						return new Date(d).getHours();
 					})));
@@ -88,16 +88,16 @@ define([
 				.style("fill", "none")
 				.style("stroke", "#000")
 				.style("stroke-width", 4)
-				.attr('filter', 'url(#blur)')
+				.attr('filter', 'url(#blur)');
 
 			var area = d3.svg.area()
-				.x(function(d, i) { return x(i) })
+				.x(function(d, i) { return x(i); })
 				.y0(0)
 				.y1(function(d) { return 155 - y(d); });
 
 			var a = graph.append('path')
 				.datum(data)
-				.attr('class', 'area')
+				.style('fill', '#DDD')
 				.attr('d', area);
 
 			var path2 = graph.append("path")
@@ -137,15 +137,15 @@ define([
 
 				path2.transition()
 					.attr("d", line(arr))
-						.duration(400)
+						.duration(400);
 
 				path.transition()
 					.attr("d", line(arr))
-						.duration(400)
+						.duration(400);
 
 				a.transition()
 					.attr('d', area(arr))
-						.duration(400)
+						.duration(400);
 
 			}, 2000);
 

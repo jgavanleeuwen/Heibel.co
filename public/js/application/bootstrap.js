@@ -26,7 +26,7 @@ require.config({
 		// Waypoints
 		waypoints: '../plugins/waypoints/waypoints',
 
-		// Flatshadow
+		// Typer
 		typer: '../plugins/typer/jquery.typer'
 	},
 	shim: {

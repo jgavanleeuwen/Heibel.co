@@ -54,12 +54,19 @@ h1 {
 	font-family: "museo-slab", sans-serif;
 	font-weight: 300;
 	font-size: 4rem;
-	color: #222;
 
 	span.typer {
-		.custom-animation();
-		border-right: 3px solid transparent;
-		padding-right: 5px;
+		color: inherit;
+		display: inline-block;
+
+		&:focus {
+			outline: none;
+			color: #222;
+		}
+
+		font {
+			color: inherit;
+		}
 	}
 	.light {
 		color: #666;
@@ -97,11 +104,6 @@ h3 {
 			color: #000;
 		}
 	}
-}
-
-label {
-	font-family: 'Open Sans', sans-serif;
-	font-weight: 400;
 }
 
 p {
@@ -178,14 +180,17 @@ section {
 .jumbotron {
 	padding: 200px 0 120px 0;
 	margin-bottom:0;
-	background: @gold;
+	background-size: cover;
+	background-position: center bottom;
+	background-color: @gold;
+/*	background-image: url('/images/tween/gold.png');*/
 	overflow: hidden;
 
 	.container {
 		padding: 0;
 	}
 
-	.arrowdown( @gold, 120px );
+	.arrowdown( /*#cfa235*/ @gold, 120px );
 }
 
 #footer {
@@ -277,30 +282,22 @@ section {
 }
 
 i.fa-flatshadow {
-	text-shadow: 	rgb(24, 24, 24) 1px 1px 0px, 
-								rgb(24, 24, 24) 2px 2px 0px, 
-								rgb(24, 24, 24) 3px 3px 0px, 
-								rgb(24, 24, 24) 4px 4px 0px, 
-								rgb(24, 24, 24) 5px 5px 0px, 
-								rgb(24, 24, 24) 6px 6px 0px, 
-								rgb(24, 24, 24) 7px 7px 0px, 
-								rgb(24, 24, 24) 8px 8px 0px, 
-								rgb(24, 24, 24) 9px 9px 0px, 
-								rgb(24, 24, 24) 10px 10px 0px, 
-								rgb(24, 24, 24) 11px 11px 0px, 
-								rgb(24, 24, 24) 12px 12px 0px, 
-								rgb(24, 24, 24) 13px 13px 0px, 
-								rgb(24, 24, 24) 14px 14px 0px, 
-								rgb(24, 24, 24) 15px 15px 0px, 
-								rgb(24, 24, 24) 16px 16px 0px, 
-								rgb(24, 24, 24) 17px 17px 0px, 
-								rgb(24, 24, 24) 18px 18px 0px;
-}
-
-.area {
-  fill: #DDD;
-}
-
-.area2 {
-	fill: #CCC;
+	text-shadow: 	rgb(24, 24, 24) 1px 1px 0, 
+								rgb(24, 24, 24) 2px 2px 0, 
+								rgb(24, 24, 24) 3px 3px 0, 
+								rgb(24, 24, 24) 4px 4px 0, 
+								rgb(24, 24, 24) 5px 5px 0, 
+								rgb(24, 24, 24) 6px 6px 0, 
+								rgb(24, 24, 24) 7px 7px 0, 
+								rgb(24, 24, 24) 8px 8px 0, 
+								rgb(24, 24, 24) 9px 9px 0, 
+								rgb(24, 24, 24) 10px 10px 0, 
+								rgb(24, 24, 24) 11px 11px 0, 
+								rgb(24, 24, 24) 12px 12px 0, 
+								rgb(24, 24, 24) 13px 13px 0, 
+								rgb(24, 24, 24) 14px 14px 0, 
+								rgb(24, 24, 24) 15px 15px 0, 
+								rgb(24, 24, 24) 16px 16px 0, 
+								rgb(24, 24, 24) 17px 17px 0, 
+								rgb(24, 24, 24) 18px 18px 0;
 }

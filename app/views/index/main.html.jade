@@ -15,9 +15,10 @@ html
 					.row
 						.col-md-12
 							center
-								h1(contenteditable=true)
+								h1
 									span.light > 
-									span.typer
+									span.typer 
+										//(contenteditable=true)
 								h2 I build applications and MVP's
 		
 		// About
@@ -142,26 +143,5 @@ html
 							li(data-target='#carousel', data-slide-to='1')
 							li(data-target='#carousel', data-slide-to='2')
 
-		section#footer.dark
-			.container
-				.row
-					.col-md-5
-						h3 Want to hire me?
-						p
-							| Donec consequat fringilla libero, ac sollicitudin nibh volutpat at. Suspendisse adipiscing magna nec elit condimentum, ac ullamcorper purus tincidunt. 
-					.col-md-2.col-md-offset-1
-						h3 Contact
-						p
-							i.fa.fa-envelope  
-							a(href="mailto:mail@heibel.co") mail@heibel.co
-						p
-							i.fa.fa-skype
-							a(href="skype:jgavanleeuwen") jgavanleeuwen
-					.col-md-2.col-md-offset-1
-						h3 Social
-						.social
-							i.fa.fa-twitter.fa-flatshadow
-						.social
-							i.fa.fa-linkedin.fa-flatshadow
-						.social
-							i.fa.fa-github.fa-flatshadow
+		// Footer
+		include ../footer.html.jade

@@ -39,16 +39,32 @@ define([
 
 				var self = this;
 
-				this.template = this.$el.html();
+				/*$('span.typer')
+					.on('keydown', function(e) {
+						if (e.keyCode === 13) {
+							var txt = $(this).text();
+							if(txt.indexOf('find') === 0) {
+								$.scrollTo($('*:contains("' + txt.replace('find ', '') + '")').last(), 250, {axis: 'y', offset: {top:-100} });
+							} else if(txt.indexOf('go' === 0)) {
+								$.scrollTo('#' + $(this).text().replace('go', '').replace(/^\s+|\s+$/g, ''), 250, {axis: 'y', offset: {top:-50} });
+							}  else if(txt.indexOf('hire' === 0)) {
+								$.scrollTo('#footer', 250, {axis: 'y', offset: {top:-50} });
+							}
+							e.preventDefault();
+						}
+					}).on('click', function(e) {
+						document.execCommand('selectAll',false,null)
+					});*/
+
+
+				$('span.typer').typer([
+						'<span class="light">put </span>allround coder',
+						'<span class="light">put </span>creative developer',
+						'<span class="light">draw </span>logo.svg'
+					], { endless: false, delay: 1500 });
 
 				this.workflowView = new WorkflowView().render();
 				this.chartView = new ChartView().render();
-
-				$('span.typer').typer([
-						'<span class="light">put "</span>Heibel.co<span class="light">"</span>',
-						'<span class="light">put "</span>Developer<span class="light">"</span>'
-					], { endless: true, delay: 2500 });
-				
 			}
 
 
