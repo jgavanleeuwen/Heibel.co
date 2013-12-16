@@ -142,6 +142,9 @@ section.image.lap_image {
   background: #EEE;
   color: inherit;
 }
+.tooltip {
+  font-family: "Open Sans";
+}
 .jumbotron {
   padding: 200px 0 120px 0;
   margin-bottom: 0;

@@ -17,8 +17,7 @@ html
 							center
 								h1
 									span.light > 
-									span.typer 
-										//(contenteditable=true)
+									span.typer(contenteditable=true, data-toggle="tooltip", title="Try yourself")
 								h2 I build applications and MVP's
 		
 		// About
@@ -27,14 +26,9 @@ html
 				.row
 					.col-md-10.col-md-offset-1
 						center
-							h2.black How about you?!
+							h2.black !{cms.get({row: 1, col: 1})}
 							p.large
-								| Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet mattis risus, aliquet vehicula lectus. Maecenas quis orci 
-								| massa. Cras commodo lorem ut diam tempor cursus. Nullam hendrerit ut quam et aliquam. Cras 
-								a(href="#") mattis
-								|  enim 
-								a(href="#") metti
-								|  mattis congue. 
+								| !{cms.get({row: 1, col: 2})}
 							img.img-responsive(src='images/macbook.png')
 
 
@@ -45,25 +39,19 @@ html
 					.col-md-6
 						.row
 							.col-md-10.col-md-offset-1
-								h3 Who is Heibel?
+								h3 !{cms.get({row: 3, col: 1})}
 								hr
+								!{cms.get({row: 3, col: 2})}
 								p
-									| Sed adipiscing interdum lobortis. Quisque eget fermentum est. Pellentesque eget dolor bibendum, fringilla purus eget, consectetur orci.
-									| Pellentesque faucibus elit eu ultricies suscipit. Aliquam ultricies erat eget suscipit malesuada.
-								p
-									| Aliquam ultricies erat eget suscipit malesuada.
-								p
-									a(href='#').button Read more!
+									a(href='#', title="Coming soon", data-toggle="tooltip").button Read more!
 					.col-md-6
 						.row
 							.col-md-10.col-md-offset-1
-								h3 Who can we do for you?
+								h3 !{cms.get({row: 4, col: 1})}
 								hr
+								!{cms.get({row: 4, col: 2})}
 								p
-									| In sagittis ac justo non vulputate. Nam viverra luctus interdum. Nam consequat aliquet consequat. Nunc vitae vulputate mauris. Vivamus aliquam, diam ac 
-									| egestas rutrum, velit nisi convallis tellus, ac ornare magna dui quis est.
-								p
-									a(href='#').button Read more!
+									a(href='#', title="Coming soon", data-toggle="tooltip").button Read more!
 
 		// Pause
 		section.image.lap_image
@@ -77,31 +65,31 @@ html
 							.col-md-10.col-md-offset-1
 								center
 									i.fa.fa-flask.large
-									h2.black Big data
+									h2.black !{cms.get({row: 6, col: 1})}
 									p
-										| Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet mattis risus, aliquet vehicula.
+										| !{cms.get({row: 6, col: 2})}
 									p
-										a(href='#').button Read more!
+										a(href='#', title="Coming soon", data-toggle="tooltip").button Read more!
 					.col-md-4
 						.row
 							.col-md-10.col-md-offset-1
 								center
 									i.fa.fa-sitemap.large
-									h2.black Responsiveness
+									h2.black !{cms.get({row: 7, col: 1})}
 									p
-										| Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet mattis risus, aliquet vehicula. 
+										| !{cms.get({row: 7, col: 2})}
 									p
-										a(href='#').button Read more!
+										a(href='#', title="Coming soon", data-toggle="tooltip").button Read more!
 					.col-md-4
 						.row
 							.col-md-10.col-md-offset-1
 								center
 									i.fa.fa-rocket.large
-									h2.black Layout
+									h2.black !{cms.get({row: 8, col: 1})}
 									p
-										| Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet mattis risus, aliquet.
+										| !{cms.get({row: 8, col: 2})}
 									p
-										a(href='#').button Read more!
+										a(href='#', title="Coming soon", data-toggle="tooltip").button Read more!
 
 		// About
 		section#examples.wide

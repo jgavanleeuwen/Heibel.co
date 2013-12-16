@@ -17,9 +17,6 @@ require.config({
 		// Socket.IO
 		socketio: '../plugins/socketio/socket.io.min',
 
-		// Retina
-		retina: '../plugins/retina/retina-1.1.0.min',
-
 		// D3
 		d3: 'http://d3js.org/d3.v3.min',
 
@@ -27,7 +24,10 @@ require.config({
 		waypoints: '../plugins/waypoints/waypoints',
 
 		// Typer
-		typer: '../plugins/typer/jquery.typer'
+		typer: '../plugins/typer/jquery.typer',
+
+		// Typeahead
+		typeahead: '../plugins/typeahead/typeahead'
 	},
 	shim: {
 		underscore: {
